@@ -31,8 +31,9 @@ func HandleRequest(req *http.Request) (*http.Response, error) {
 				"Content-Type":   {"application/json"},
 				"Content-Length": {fmt.Sprintf("%d", len(data))},
 			},
-			Body:    io.NopCloser(bytes.NewReader(data)),
-			Request: req,
+			ContentLength: int64(len(data)),
+			Body:          io.NopCloser(bytes.NewReader(data)),
+			Request:       req,
 		}, nil
 	}
 
@@ -42,9 +43,11 @@ func HandleRequest(req *http.Request) (*http.Response, error) {
 				StatusCode: 200,
 				Body:       io.NopCloser(bytes.NewReader([]byte(existing))),
 				Header: map[string][]string{
-					"Content-Type": {"application/json"},
+					"Content-Type":   {"application/json"},
+					"Content-Length": {fmt.Sprintf("%d", len([]byte(existing)))},
 				},
-				Request: req,
+				ContentLength: int64(len([]byte(existing))),
+				Request:       req,
 			}, nil
 		}
 
@@ -78,8 +81,9 @@ func HandleRequest(req *http.Request) (*http.Response, error) {
 				"Content-Type":   {"application/json"},
 				"Content-Length": {fmt.Sprintf("%d", len(data))},
 			},
-			Body:    io.NopCloser(bytes.NewReader(data)),
-			Request: req,
+			ContentLength: int64(len(data)),
+			Body:          io.NopCloser(bytes.NewReader(data)),
+			Request:       req,
 		}, nil
 	}
 
