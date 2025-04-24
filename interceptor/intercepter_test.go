@@ -1,4 +1,4 @@
-package intercepter_test
+package interceptor_test
 
 import (
 	"io"
@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ms-henglu/azurerm-intercepter/intercepter"
+	"github.com/ms-henglu/azurerm-interceptor/interceptor"
 )
 
 func Test_HandleRequest(t *testing.T) {
@@ -79,7 +79,7 @@ func Test_HandleRequest(t *testing.T) {
 
 	for _, tc := range testcases {
 		t.Logf("Running test case: %s", tc.Name)
-		resp, err := intercepter.HandleRequest(tc.Request)
+		resp, err := interceptor.HandleRequest(tc.Request)
 		if err != nil {
 			t.Fatalf("Failed to handle request: %v", err)
 		}

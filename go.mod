@@ -1,3 +1,3 @@
-module github.com/ms-henglu/azurerm-intercepter
+module github.com/ms-henglu/azurerm-interceptor
 
 go 1.24.1
