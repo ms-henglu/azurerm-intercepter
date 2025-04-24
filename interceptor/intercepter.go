@@ -31,7 +31,8 @@ func HandleRequest(req *http.Request) (*http.Response, error) {
 				"Content-Type":   {"application/json"},
 				"Content-Length": {fmt.Sprintf("%d", len(data))},
 			},
-			Body: io.NopCloser(bytes.NewReader(data)),
+			Body:    io.NopCloser(bytes.NewReader(data)),
+			Request: req,
 		}, nil
 	}
 
@@ -53,6 +54,7 @@ func HandleRequest(req *http.Request) (*http.Response, error) {
 			Header: map[string][]string{
 				"Content-Type": {"application/json"},
 			},
+			Request: req,
 		}, nil
 	}
 
@@ -76,7 +78,8 @@ func HandleRequest(req *http.Request) (*http.Response, error) {
 				"Content-Type":   {"application/json"},
 				"Content-Length": {fmt.Sprintf("%d", len(data))},
 			},
-			Body: io.NopCloser(bytes.NewReader(data)),
+			Body:    io.NopCloser(bytes.NewReader(data)),
+			Request: req,
 		}, nil
 	}
 
@@ -85,7 +88,8 @@ func HandleRequest(req *http.Request) (*http.Response, error) {
 		Header: map[string][]string{
 			"Content-Type": {"application/json"},
 		},
-		Body: http.NoBody,
+		Body:    http.NoBody,
+		Request: req,
 	}, nil
 }
 
